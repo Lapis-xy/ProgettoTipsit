@@ -1,0 +1,43 @@
+body{
+
+    margin: 20px;
+    font-family: "Jersey 10", sans-serif;
+    font-weight: 10;
+    font-style: normal;
+    font-size: 60px;
+    background-image: linear-gradient(to bottom,rgba(18, 3, 27, 0.925));
+    background-repeat: no-repeat;
+    background-attachment: fixed ;
+}
+
+
+
+.completamento{
+
+    padding: 10px;
+    border:purple 5px solid ;
+    margin: 30px;
+    width:  90%;
+
+
+}
+
+p{
+    color:slateblue;
+    margin: 30px;
+}
+
+h2{
+    margin-bottom: 0px;
+}
+
+h4{
+    margin: 10px;
+}
+
+
+
+.testo{
+    color: yellow;
+    margin: 30px;
+}
