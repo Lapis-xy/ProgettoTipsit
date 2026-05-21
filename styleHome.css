@@ -2,20 +2,35 @@
     font-family: "Jersey 10", sans-serif;
     font-style: normal;
     font-weight: 10px;
-    font-size: 40px;
+    
     margin: 0;
     padding: 0;
+
+}
+body{
+    background-color: var(--sfondo);
+}
+
+:root{
+
+    --sfondo: #17092a;
+    --testo-giallo: #fbbf24;
+    --testo-verde: #10b880;
+    --testo-blu: #06b6d4;
+    --testo-rosa: #ec4899;
+    --testo-viola: #a352f1;
+    --testo-arancione: #ea6b17;
+    --testo: #574a74;
+    --sfondo-navbar: #08001a;
 
 }
 
 #nav-titolo{
    
-      color: #fabe24;
+      color: var(--testo-giallo);
   text-shadow: 
-    
-    0 0 15px #fabe24,
-    0 0 21px #fabe24,
-    0 0 42px #fabe24;
+    0 0px 21px var(--testo-giallo),
+    0 0px 42px var(--testo-giallo);
     
 }
 
@@ -27,24 +42,95 @@ nav img{
 }
 
 nav{
-
-
+font-size: 50px;
+border-bottom: 4px solid var(--testo-rosa);
+box-shadow: 0 0 12px var(--testo-rosa), 0 0 24px var(--testo-rosa);
 height: 70px;
 width: 100%;
-background-color: #08001a;
-
+background-color: var(--sfondo-navbar);
 display: flex;
-justify-content: center;
-gap: 2%;
 align-items: center;
+justify-content: space-between;
 
+}
 
+#nav-sinistra{
+    display: flex;
+    gap: 10px;
+    padding-left: 1%;
+    align-items: center;
+}
 
+#nav-destra{
+    display: flex;
+    justify-content: right;
+    gap: 10px;
+    padding-right: 2%;
+    align-items: center;
+}
 
+nav a{
 
+    background-color: transparent;
+    color: var(--testo-blu);
+    font-size: 20px;
+    letter-spacing: 1px;
+    padding: 10px;
+    border: solid var(--testo-blu) 2px;
+    display: flex;
+    align-items: center;
+     gap: 6px;
+    text-decoration: none;
 
+}
 
+.nav-icone{
+    width: 18px;
+    height: 18px;
+    display: block;
+}
+
+nav a:hover{
+    cursor: pointer;
+    background-color: var(--testo-rosa);
 
 
 }
 
+
+
+nav a.attivo{
+    background-color: var(--testo-rosa);
+    border: 2px solid var(--testo-giallo);
+
+}
+
+nav a.attivo:hover{
+    background-color: var(--sfondo);
+    border: 2px solid var(--testo-giallo);
+
+}
+
+
+.main{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: top;
+    padding-top: 3%;
+
+}
+
+
+.player-box {
+    border: 2px solid var(--testo-rosa);
+    width: 200px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:  #ec489a2d;
+    font-size: 30px;
+    color: var(--testo-rosa);
+}
