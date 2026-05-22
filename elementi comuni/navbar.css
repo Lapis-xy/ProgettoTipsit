@@ -1,0 +1,123 @@
+:root{
+  --sfondo: #17092a;
+  --testo-giallo: #fbbf24;
+  --testo-verde: #10b880;
+  --testo-blu: #06b6d4;
+  --testo-rosa: #ec4899;
+  --testo-viola: #a352f1;
+  --testo-arancione: #ea6b17;
+  --testo: #574a74;
+  --sfondo-navbar: #08001a;
+}
+
+#nav-titolo{
+  color: var(--testo-giallo);
+  text-shadow:
+    0 0 21px var(--testo-giallo),
+    0 0 42px var(--testo-giallo);
+}
+
+nav img{
+  width: 50px;
+  height: 50px;
+}
+
+nav{
+  font-size: 50px;
+  border-bottom: 4px solid var(--testo-rosa);
+  box-shadow: 0 0 12px var(--testo-rosa), 0 0 24px var(--testo-rosa);
+  height: 70px;
+  width: 100%;
+  background-color: var(--sfondo-navbar);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#nav-sinistra{
+  display: flex;
+  gap: 10px;
+  padding-left: 1%;
+  align-items: center;
+}
+
+#nav-destra{
+  display: flex;
+  justify-content: right;
+  gap: 10px;
+  padding-right: 2%;
+  align-items: center;
+}
+
+nav a{
+  background-color: transparent;
+  color: var(--testo-blu);
+  font-size: 20px;
+  letter-spacing: 1px;
+  padding: 10px;
+  border: solid var(--testo-blu) 2px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+}
+
+.nav-icone{
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+nav a:hover{
+  cursor: pointer;
+  background-color: var(--testo-rosa);
+}
+
+nav a.attivo{
+  background-color: var(--testo-rosa);
+  border: 2px solid var(--testo-giallo);
+}
+
+nav a.attivo:hover{
+  background-color: var(--sfondo);
+  border: 2px solid var(--testo-giallo);
+}
+
+#pulsante-account{
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+}
+
+#box-account{
+  position: absolute;
+  top: 70px;
+  right: 2%;
+  background-color: var(--sfondo-navbar);
+  border: 2px solid var(--testo-rosa);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  color: var(--testo-rosa);
+}
+
+#btn-uscita{
+  background-color: transparent;
+  color: var(--testo-rosa);
+  border: 2px solid var(--testo-blu);
+  padding: 6px 14px;
+  font-size: 16px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+#btn-uscita:hover{
+  background-color: var(--testo-rosa);
+  color: var(--sfondo-navbar);
+}
