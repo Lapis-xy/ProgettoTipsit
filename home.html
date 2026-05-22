@@ -4,14 +4,17 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Game Vault</title>
-
+      
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Micro+5&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="styleHome.css">
+        
     </head>
     <body>
-
+        
       <nav>
         <div id="nav-sinistra">
           <img src="img/logo.png" alt="">
@@ -27,19 +30,20 @@
           <div id="box-account">
             <p id="nome-utente-account">Player one</p>
             <button id="btn-uscita">Logout</button>
+          
           </div>
         </div>
       </nav>
 
 
       <div class="main">
-        <div class="player-box">
+        <div class = "player-box">
           <p id="nome-utente">Player one</p>
         </div>
 
         <div>
             <h1 id="titolo">Game Vault</h1>
-        </div>
+        </div>  
 
         <div>
           <h2>Segui i tuoi progressi</h2>
@@ -71,7 +75,12 @@
             <p class="info-giocate-titolo">trofei</p>
           </div>
         </div>
-      </div>
+
+
+
+
+ 
+
 
 
       <div class="contenitore-popup">
@@ -84,22 +93,26 @@
 
             <form class="popup-modulo" action="">
               <div class="popup-campo">
-              <input id="input-testo" type="text" maxlength="12" placeholder="-  -  -  -  -  -" />
+              <input id="input-testo" type="text" maxlength="12" placeholder="—  —  —  —  —  —" />
               <span id="conteggio" class="popup-contatore">0/12</span>
             </div>
           </form>
           <p id="msg-errore">Errore Lunghezza minima del nome 3 caratteri</p>
           <div>
             <button id="btn-invia">INVIA</button>
+            
           </div>
-
+          
           <p class="popup-messaggio">INSERT COIN</p>
         </div>
       </div>
 
 
-    <script src="script.js"></script>
 
+
+    <script src="script.js"></script>
+      
     </body>
 
+         
 </html>

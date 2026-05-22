@@ -2,6 +2,7 @@
     font-family: "Jersey 10", sans-serif;
     font-style: normal;
     font-weight: 10px;
+    
     margin: 0;
     padding: 0;
 
@@ -25,12 +26,12 @@ body{
 }
 
 #nav-titolo{
-
+   
       color: var(--testo-giallo);
-  text-shadow:
+  text-shadow: 
     0 0px 21px var(--testo-giallo),
     0 0px 42px var(--testo-giallo);
-
+    
 }
 
 nav img{
@@ -110,17 +111,8 @@ nav a.attivo:hover{
 
 }
 
-.main{
-    margin-top: 2%;
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    padding-top: 3%;
-    gap: 5px;
 
-}
+
 
 
 .player-box {
@@ -136,6 +128,7 @@ nav a.attivo:hover{
 }
 
 
+
 #nome-utente::after{
 
 
@@ -148,7 +141,7 @@ nav a.attivo:hover{
 }
 
 
-#pulsante-account{
+#nav-destra button{
     background-color: transparent;
     border: none;
     padding: 0;
@@ -199,7 +192,6 @@ nav a.attivo:hover{
 
 
 }
-
 
 #popup{
 
@@ -265,7 +257,7 @@ nav a.attivo:hover{
     font-size: 28px;
     color: var(--testo-giallo);
     text-align: center;
-
+    
     margin-bottom: 2px;
 }
 
@@ -291,7 +283,7 @@ nav a.attivo:hover{
     letter-spacing: 2px;
     min-width: 200px;
     box-shadow: 0 0 16px var(--testo-rosa), inset 0 0 10px var(--testo-rosa);
-
+   
 }
 
 #btn-invia::before{
@@ -303,7 +295,7 @@ nav a.attivo:hover{
 }
 
 #btn-invia:hover{
-
+    
     box-shadow: 0 0 22px var(--testo-rosa), 0 0 30px var(--testo-viola);
     color: var(--testo-giallo);
 }
@@ -371,6 +363,18 @@ nav a.attivo:hover{
 
 }
 
+.main{
+    margin-top: 2%;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 3%;
+    gap: 5px;
+
+}
+
 #titolo{
 
     color: var(--testo-giallo);
@@ -393,7 +397,7 @@ nav a.attivo:hover{
 
 #info-giocate-box{
     margin-top: 24px;
-    width: min(900px, 90%);
+    width: 900px;
     border: 2px solid var(--testo-rosa);
     background: transparent;
     box-shadow: 0 0 16px rgba(236, 72, 153, 0.45), 0 0 28px rgba(163, 82, 241, 0.35);
@@ -440,18 +444,9 @@ nav a.attivo:hover{
     text-shadow: 0 0 10px rgba(163, 82, 241, 0.35);
 }
 
-.info-giocate-valore{
-    font-family: "Share Tech Mono", monospace;
-    font-size: 18px;
-    letter-spacing: 0;
-    color: currentColor;
-    text-shadow: 0 0 10px currentColor, 0 0 18px rgba(236, 72, 153, 0.45);
-    font-variant-numeric: slashed-zero;
-    font-feature-settings: "zero" 1;
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    line-height: 20px;
-    text-align: center;
-    transform: scaleX(1.05) scaleY(0.95);
-}
+.info-giocate-valore 
+    { 
+        
+    
+        font-size: 52px; 
+    }
