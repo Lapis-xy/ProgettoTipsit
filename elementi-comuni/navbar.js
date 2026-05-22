@@ -6,8 +6,15 @@ let linkTrofei = document.getElementById("link-trofei");
 
 links = [linkHome , linkGiochi , linkTrofei];
 
+let pulsanteAccount = document.getElementById("pulsante-account");
+let boxAccount = document.getElementById("box-account");
+
 
 caricamento_navBar()
+
+if (pulsanteAccount && boxAccount) {
+    pulsanteAccount.addEventListener("click" , MostraInfoAccount);
+}
 
 
 
@@ -27,5 +34,16 @@ function caricamento_navBar(){
             link.classList.add("attivo")
         }
     });
+}
+
+function MostraInfoAccount(){
+
+    if(boxAccount.style.display == "none"){
+        boxAccount.style.display = "block";
+    }else{
+        boxAccount.style.display = "none";
+    }
+
+
 }
 

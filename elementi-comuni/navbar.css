@@ -2,7 +2,6 @@
     font-family: "Jersey 10", sans-serif;
     font-style: normal;
     font-weight: 10px;
-    font-size: 50px;
     margin: 0;
     padding: 0;
 
@@ -105,4 +104,44 @@ nav a.attivo{
 nav a.attivo:hover{
     background-color: var(--sfondo);
     border: 2px solid var(--testo-giallo);
+}
+
+#nav-destra button{
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+}
+
+#box-account{
+    position: absolute;
+    top: 70px;
+    right: 2%;
+    background-color: var(--sfondo-navbar);
+    border: 2px solid var(--testo-rosa);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+
+    color: var(--testo-rosa);
+}
+
+#btn-uscita{
+    background-color: transparent;
+    color: var(--testo-rosa);
+    border: 2px solid var(--testo-blu);
+    padding: 6px 14px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+#btn-uscita:hover{
+    background-color: var(--testo-rosa);
+    color: var(--sfondo-navbar);
 }
