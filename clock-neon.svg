@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Orologio neon">
+  <defs>
+    <radialGradient id="g1" cx="40%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#07323b" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#04111a" stop-opacity="0.95" />
+    </radialGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="b" />
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="soft" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="3" result="s" />
+      <feMerge>
+        <feMergeNode in="s"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- transparent background -->
+  <rect width="128" height="128" fill="none" />
+
+  <!-- outer neon ring (glow) -->
+  <g transform="translate(64,64)">
+    <circle r="56" fill="none" stroke="#00c8ff" stroke-width="4" opacity="0.24" filter="url(#glow)" />
+
+    <!-- main filled circle -->
+    <circle r="48" fill="url(#g1)" />
+
+    <!-- inner bright stroke -->
+    <circle r="48" fill="none" stroke="#00c8ff" stroke-width="3" opacity="0.95" filter="url(#soft)" />
+
+    <!-- subtle inner ring -->
+    <circle r="34" fill="none" stroke="#00222a" stroke-width="2" opacity="0.6" />
+
+    <!-- clock hands (neon) -->
+    <g stroke="#00c8ff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)">
+      <!-- hour hand -->
+      <line x1="0" y1="6" x2="0" y2="-18" />
+      <!-- minute hand (towards 2 o'clock) -->
+      <line x1="0" y1="6" x2="18" y2="10" />
+    </g>
+
+    <!-- center dot -->
+    <circle r="3" fill="#00c8ff" />
+  </g>
+</svg>

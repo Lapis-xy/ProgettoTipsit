@@ -4,46 +4,115 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Game vault</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="myGames.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Micro+5&display=swap" rel="stylesheet">
+    <link class="styles" rel="stylesheet" href="myGames.css">
   </head>
   <body>
-    <div class="container-fluid">
-        <div class="container" id="titoloPrincipale">
-            <p class="h2">I miei videogiochi</p>
+    <nav>
+        <div id="nav-sinistra">
+          <img src="img/logo.png" alt="">
+          <p id="nav-titolo">Game Vault</p>
+        </div>
+        <div id="nav-destra">
+          <a id="link-home" href="home.html"><img class="nav-icone" src="img/home.svg" alt="">Home</a>
+          <a id="link-giochi" href="myGames.html" class="attivo"><img class="nav-icone" src="img/giochi.svg" alt="">My Games</a>
+          <a id="link-trofei" href="trofei.html"><img class="nav-icone" src="img/trofei.svg" alt="">Trofei</a>
+
+          <button id="pulsante-account"><img src="img/account.svg" alt=""></button>
+          <div id="box-account">
+            <p id="nome-utente-account">Player one</p>
+            <button id="btn-uscita">Logout</button>
+          </div>
+        </div>
+      </nav>
+
+    <div class="container" id="containerGenerale">
+        <div id="sezioneTitoli">
+            <h1>I MIEI VIDEOGIOCHI</h1>
+            <p id="pTitolo">Gestisci e traccia tutti i videogiochi a cui hai giocato</p>
         </div>
 
-        <div class="container" id="titoloSecondario">
-            <p class="h5">Gestisci e traccia tutti i videogiochi a cui hai giocato</p>
-        </div>
-
-        <div class="container" id="sezioneAggiungiVideogioco">
-            <div class="container">
-                <p class="h5">+ aggiungi videogiochi</p>
-            </div>
-            <div class="container">
-                <form>
-                    <input type="text">
-                    <input type="date">
-                    <select>
-                        <option></option>
+        <div id="sezioneAggiungiVideogioco">
+            <h2 id="h2Aggiungi">+ AGGIUNGI VIDEOGIOCHI</h2>
+            <form class="row">
+                <div class="col-md">
+                    <input type="text" id="inputNomeVideogioco" placeholder="Nome Videogioco">
+                </div>
+                <div class="col-md">
+                    <input type="date" id="inputDataInizio">
+                </div>
+                <div class="col-md">
+                    <select id="selectModalita">
+                        <option value="Single Player">Single Player</option>
+                        <option value="Multiplayer">Multiplayer</option>
                     </select>
-                </form>
+                </div>
+                <div class="col-md">
+                    <input type="number" id="inputOreGiocate" placeholder="Ore Giocate">
+                </div>
+                <div class="col-md">
+                    <button type="button" id="btnAggiungi">+ AGGIUNGI</button>     
+                </div>
+            </form>
+        </div>
+
+        <div class="row" id="sezioneFinestre">
+            <div class="col-md" id="finestraRegistrati">
+                <div class="box-interno" id="boxRegistrati">
+                    <p id="pVideogiocoRegistrati">Videogioco Registrati</p>
+                    <p id="pNumeroVideogiochi">0</p>
+                </div>
+            </div>
+
+            <div class="col-md" id="finestraTempo">
+                <button id="btnTempo">
+                    <img src="assets/clock-neon.svg" alt="Clock" id="clockIcon">
+                    <p id="pTempo">TEMPO GIOCATO</p>
+                </button>
+            </div>
+
+            <div class="col-md" id="finestraSingle">
+                <button id="btnSingle">
+                    <img src="assets/user-pink.svg" alt="User" id="userIcon">
+                    <p id="pSingle">SINGLE PLAYER</p>
+                </button>
+            </div>
+
+            <div class="col-md" id="finestraSalva">
+                <button id="btnSalva">
+                    <img src="assets/save-icon-faithful.svg" alt="Save" id="saveIcon">
+                    <p id="pSalva">SALVA LOCALE</p>
+                </button>
             </div>
         </div>
 
-        <div class="containers" id="sezioneFinestre">
-
+        <div id="sezioneVisualizzazioneGiochi" class="table-responsive">
+            <table class="table table-borderless align-middle">
+                <thead>
+                    <tr>
+                        <th>NOME</th>
+                        <th>DATA INIZIO</th>
+                        <th>MODALITA'</th>
+                        <th>DURATA (ORE)</th>
+                        <th>AZIONI</th>
+                    </tr>
+                </thead>
+                <tbody id="contenutoTabella">
+                    <tr class="riga-vuota" id="primaRiga">
+                        <td colspan="5">Nessun videogioco registrato. Aggiungi il tuo primo gioco!</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-
-        <div class="container" id="sezioneVisualizzazioneGiochi">
-        
     </div>
-
-
-
-
-
+    <div class="modal" id="modalTempo"></div>
+    <div class="modal" id="modalSingle"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script src="myGames.js"></script>
