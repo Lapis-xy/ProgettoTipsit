@@ -30,8 +30,13 @@
 </div>
 <!-- Sezione 2: barra completamento -->
  <div class="Sezione2">
-    <div class="completamento"> <p class="testo">Completamento </p><div id = "barra" class="barra-completamento"></div>  
-    <p id="percentuale">0% Completato</p></div>
+    <div class="completamento">
+        <p class="testo">Completamento </p>
+        <div class="barra-completamento">
+            <div id="barra" class="barra-fill"></div>
+        </div>
+        <p id="percentuale">0% Completato</p>
+    </div>
 </div>
 <!-- Sezione 3: lista achievment -->
 <div class="ranks Sezione3">
@@ -82,19 +87,19 @@
   <div class="row g-4 Sezione4">
 
         <div class="col-12 col-md-6 col-lg-4">
-            <div class="card achievment bronze-card" data-rarity="bronze">
+            <div class="card achievment bronze-card" data-rarity="bronze" id="blind-run-achievement">
                 <div class="card-header">
                     <div class="progress-bar-container">
                         <div class="progress-bar" id="bar-1" style="width: 0%;"></div>
                     </div>
                 </div>
                 <div class="card-body">
-                    <h3 class="achievement-title">FIRST BLOOD</h3>
-                    <p class="achievement-desc">Raggiungi il primo vantaggio alla barca</p>
+                    <h3 class="achievement-title">BLIND RUN</h3>
+                    <p class="achievement-desc">Cosa vorrà mai dire?</p>
                 </div>
                 <div class="card-footer">
                     <span class="rarity-badge bronze">BRONZE</span>
-                    <span class="achievement-count" id="count-1">0/1</span>
+                    <span class="achievement-count" id="count-1">0/5</span>
                 </div>
             </div>
         </div>
@@ -112,7 +117,7 @@
                 </div>
                 <div class="card-footer">
                     <span class="rarity-badge silver">SILVER</span>
-                    <span class="achievement-count" id="count-2">0/5</span>
+                    <span class="achievement-count" id="count-2">0/50</span>
                 </div>
             </div>
         </div>
@@ -247,5 +252,7 @@
 
 
       <script src="navbar.js"></script>
+      <script src="myGames.js"></script>
+    
 </body>
 </html>

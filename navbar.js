@@ -26,9 +26,104 @@ function caricamento_navBar(){
 
 // leggere la lista dei videogiochi da localStorage
 window.onstorage = (Event) => {
-    if(Event.key == "listaVideogiochi"){
-        listaVideogiochi = JSON.parse(localStorage.getItem("listaVideogiochi"));
+    if (Event.key == "listaVideogiochi" || Event.key == "listavideogiochi") {
+        updateAchievementsFromStorage();
     }
+}
+
+function getSavedVideogiochi() {
+    const saved = localStorage.getItem("listavideogiochi") || localStorage.getItem("listaVideogiochi");
+    if (!saved) {
+        return [];
+    }
+
+    try {
+        return JSON.parse(saved) || [];
+    } catch (error) {
+        console.warn("Impossibile leggere listaVideogiochi da localStorage", error);
+        return [];
+    }
+}
+
+function parseNumber(value) {
+    const number = Number(value);
+    return Number.isFinite(number) ? number : 0;
+}
+
+function getGameHours(game) {
+    return (
+        parseNumber(game.tempo) ||
+        parseNumber(game.hours) ||
+        parseNumber(game.playedHours) ||
+        parseNumber(game.duration) ||
+        parseNumber(game.hoursPlayed) ||
+        0
+    );
+}
+
+function isSinglePlayerGame(game) {
+    return game.modalita === "Single Player" ||
+           game.modalita === "single player" ||
+           game.modalita === "Single player" ||
+           game.modalita === "single" ||
+           Boolean(game.singlePlayer || game.isSinglePlayer || game.is_single_player ||
+                   (typeof game.mode === "string" && game.mode.toLowerCase().includes("single")));
+}
+
+function hasFirstBlood(game) {
+    return Boolean(
+        game.firstBlood ||
+        game.firstAdvantage ||
+        game.hasFirstBlood ||
+        game.first_advantage ||
+        game.first_win
+    );
+}
+
+function hasSpeedRunner(game) {
+    const completed = Boolean(game.completed || game.isCompleted || game.finished || game.completato);
+    const hours = getGameHours(game);
+    return completed && hours > 0 && hours <= 5;
+}
+
+function updateAchievementsFromStorage() {
+    listaVideogiochi = getSavedVideogiochi();
+
+    const totalHours = listaVideogiochi.reduce((sum, game) => sum + getGameHours(game), 0);
+    const singlePlayerCount = listaVideogiochi.filter(isSinglePlayerGame).length;
+    const hasFirstAdvantage = listaVideogiochi.some(hasFirstBlood);
+    const hasFastRun = listaVideogiochi.some(hasSpeedRunner);
+
+    const achievements = [
+        { id: 1, current: hasFirstAdvantage ? 1 : 0, total: 1 },
+        { id: 2, current: Math.min(listaVideogiochi.length, 50), total: 50 },
+        { id: 3, current: Math.min(listaVideogiochi.length, 20), total: 20 },
+        { id: 4, current: Math.min(totalHours, 10), total: 10 },
+        { id: 5, current: Math.min(totalHours, 50), total: 50 },
+        { id: 6, current: Math.min(totalHours, 100), total: 100 },
+        { id: 7, current: Math.min(singlePlayerCount, 3), total: 3 },
+        { id: 8, current: hasFastRun ? 1 : 0, total: 1 },
+        { id: 9, current: Math.min(totalHours, 500), total: 500 }
+    ];
+
+    achievements.forEach(a => updateAchievement(a.id, a.current, a.total));
+    updateOverallCompletion(achievements);
+}
+
+function updateOverallCompletion(achievements) {
+    const overallBar = document.getElementById("barra");
+    const overallText = document.getElementById("percentuale");
+
+    if (!overallBar || !overallText) {
+        return;
+    }
+
+    const totalAchievements = achievements.length;
+    const completedAchievements = achievements.filter(a => a.current >= a.total).length;
+    const completedPercent = Math.round((completedAchievements / totalAchievements) * 100);
+
+    overallBar.style.width = completedPercent + "%";
+    overallText.textContent = completedPercent + "% Completato";
 }
 
 function updateAchievement(id, current, total) {
@@ -40,6 +135,21 @@ function updateAchievement(id, current, total) {
         const percentage = (current / total) * 100;
         barElement.style.width = percentage + '%';
     }
+}
+
+function setupBlindRunRedirect() {
+    const blindRunCard = document.getElementById("blind-run-achievement");
+    if (!blindRunCard) {
+        return;
+    }
+
+    let clickCount = 0;
+    blindRunCard.addEventListener("click", () => {
+        clickCount += 1;
+        if (clickCount >= 5) {
+            window.location.href = "video.html";
+        }
+    });
 }
 
 // Funzione per filtrare le card in base alla rarity selezionata
@@ -77,4 +187,10 @@ document.addEventListener('DOMContentLoaded', function() {
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', filterByRarity);
     });
+
+    updateAchievementsFromStorage();
+    setupBlindRunRedirect();
 });
+
+
+

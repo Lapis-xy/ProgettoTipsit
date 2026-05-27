@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Segreto</title>
+    <link rel="stylesheet" href="stile(trofei).css">
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .video-page {
+            width: min(100%, 1000px);
+            text-align: center;
+        }
+        .video-page h1 {
+            color: var(--testo-giallo);
+            margin-bottom: 16px;
+        }
+        .video-card {
+            background: rgba(23, 9, 42, 0.95);
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 0 30px rgba(163, 82, 241, 0.25);
+        }
+        video {
+            width: 100%;
+            border-radius: 16px;
+            background: black;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 12px 20px;
+            color: white;
+            background: #8b5cf6;
+            text-decoration: none;
+            border-radius: 99px;
+            box-shadow: 0 0 20px rgba(163, 82, 241, 0.35);
+        }
+    </style>
+</head>
+<body>
+    <div class="video-page video-card">
+        <h1>Video Segreto</h1>
+        <video controls>
+            <source src="img/2026-05-27 17-51-32.mkv" type="video/mp4">
+            Il tuo browser non supporta il video HTML5.
+        </video>
+        <a class="back-link" href="trofei.html">Torna ai Trofei</a>
+    </div>
+</body>
+</html>
