@@ -1,0 +1,422 @@
+/* ══════════════════════════════════════════
+   GAME VAULT — styleHome.css
+   Responsive · Bootstrap-compatible
+   ══════════════════════════════════════════ */
+
+/* ── Reset & Base ─────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Jersey 10", sans-serif;
+  font-style: normal;
+}
+
+:root {
+  --sfondo:         #17092a;
+  --sfondo-navbar:  #08001a;
+  --testo-giallo:   #fbbf24;
+  --testo-verde:    #10b880;
+  --testo-blu:      #06b6d4;
+  --testo-rosa:     #ec4899;
+  --testo-viola:    #a352f1;
+  --testo-arancione:#ea6b17;
+  --testo:          #574a74;
+  --testo-muted:    #9b8bbd;
+}
+
+html, body {
+  background-color: var(--sfondo);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Navbar styles are loaded from navbar.css */
+
+/* ── MAIN WRAPPER ─────────────────────────── */
+.main-wrapper {
+  min-height: calc(100vh - 70px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 16px 60px;
+  gap: 20px;
+}
+
+/* ── PLAYER BADGE ─────────────────────────── */
+.player-badge {
+  border: 2px solid var(--testo-rosa);
+  padding: 8px 28px;
+  background-color: rgba(236,72,153,.08);
+  font-size: clamp(20px, 3vw, 28px);
+  color: var(--testo-rosa);
+  letter-spacing: 2px;
+}
+
+#nome-utente::after {
+  content: " _";
+  animation: lampeggio 1.5s infinite step-end;
+}
+
+@keyframes lampeggio {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ── HERO ─────────────────────────────────── */
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+#titolo {
+  font-size: clamp(64px, 14vw, 150px);
+  line-height: 1;
+  color: var(--testo-giallo);
+  text-shadow: 0 0 80px rgba(251,191,36,.55), 0 0 160px rgba(251,191,36,.3);
+  text-align: center;
+}
+
+.hero-sub {
+  font-size: clamp(22px, 4vw, 40px);
+  color: var(--testo-blu);
+  text-shadow: 0 0 20px rgba(6,182,212,.6);
+}
+
+#descrizione {
+  font-size: clamp(16px, 2.5vw, 28px);
+  color: var(--testo-muted);
+  text-align: center;
+  max-width: 640px;
+}
+
+/* ── STATS BOX ────────────────────────────── */
+#info-giocate-box {
+  border: 2px solid var(--testo-rosa);
+  box-shadow: 0 0 18px rgba(236,72,153,.4), 0 0 30px rgba(163,82,241,.25);
+  background: rgba(8,0,26,.45);
+  width: 100%;
+  overflow: hidden;
+}
+
+.info-giocate-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 8px;
+  border-right: 1px solid rgba(236,72,153,.2);
+  transition: background .25s;
+  min-width: 0; /* allow flex shrink */
+}
+
+.info-giocate-box:last-child {
+  border-right: none;
+}
+
+.info-giocate-box:hover {
+  background: rgba(236,72,153,.06);
+}
+
+.info-giocate-valore {
+  font-size: clamp(28px, 5vw, 52px);
+  line-height: 1;
+  font-weight: bold;
+}
+
+.info-giocate-titolo {
+  font-size: clamp(10px, 1.4vw, 16px);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--testo);
+  text-align: center;
+  margin-top: 4px;
+}
+
+#info-giocate-giochi  .info-giocate-valore { color: var(--testo-giallo); }
+#info-giocate-ore     .info-giocate-valore { color: var(--testo-verde);  }
+#info-giocate-solo    .info-giocate-valore { color: var(--testo-rosa);   }
+#info-giocate-online  .info-giocate-valore { color: var(--testo-blu);    }
+#info-giocate-trofei  .info-giocate-valore { color: var(--testo-viola);  }
+
+/* su mobile: stack verticale 2 colonne */
+@media (max-width: 576px) {
+  #info-giocate-box {
+    flex-wrap: wrap;
+  }
+  .info-giocate-box {
+    flex: 0 0 50%;
+    max-width: 50%;
+    border-right: 1px solid rgba(236,72,153,.2);
+    border-bottom: 1px solid rgba(236,72,153,.2);
+  }
+  .info-giocate-box:nth-child(2n) {
+    border-right: none;
+  }
+}
+
+/* ── CTA CARD BUTTONS ─────────────────────── */
+.cta-cards-container {
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.cta-card {
+  flex: 1;
+  min-width: 290px;
+  max-width: 440px;
+  background-color: rgba(8, 0, 26, 0.65);
+  padding: 24px 28px;
+  text-decoration: none !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-icon-row {
+  width: 100%;
+}
+
+.card-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cta-card-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.cta-card-arrow {
+  width: 16px;
+  height: 16px;
+  opacity: 0.6;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.cta-card-title {
+  font-family: "Jersey 10", sans-serif;
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-top: 16px;
+  margin-bottom: 6px;
+  text-align: left;
+}
+
+.cta-card-desc {
+  font-family: "Jersey 10", sans-serif;
+  font-size: 19px;
+  color: var(--testo-muted);
+  line-height: 1.4;
+  margin: 0;
+  text-align: left;
+}
+
+/* My Games Card (Neon Pink) */
+.card-mygames {
+  border: 2px solid var(--testo-rosa);
+  box-shadow: 0 0 10px rgba(236, 72, 153, 0.15);
+}
+
+.card-mygames .cta-card-icon {
+  color: var(--testo-rosa);
+  filter: drop-shadow(0 0 6px var(--testo-rosa));
+}
+
+.card-mygames .cta-card-arrow {
+  color: var(--testo-rosa);
+}
+
+.card-mygames .cta-card-title {
+  color: var(--testo-rosa);
+  text-shadow: 0 0 8px rgba(236, 72, 153, 0.6);
+}
+
+.card-mygames:hover {
+  transform: translateY(-5px);
+  background-color: rgba(236, 72, 153, 0.05);
+  box-shadow: 0 0 20px rgba(236, 72, 153, 0.5), inset 0 0 10px rgba(236, 72, 153, 0.2);
+}
+
+.card-mygames:hover .cta-card-arrow {
+  transform: translateX(4px);
+  opacity: 1;
+}
+
+/* Trophy Cabinet Card (Neon Green) */
+.card-trophy {
+  border: 2px solid var(--testo-verde);
+  box-shadow: 0 0 10px rgba(16, 184, 128, 0.15);
+}
+
+.card-trophy .cta-card-icon {
+  color: var(--testo-verde);
+  filter: drop-shadow(0 0 6px var(--testo-verde));
+}
+
+.card-trophy .cta-card-arrow {
+  color: var(--testo-verde);
+}
+
+.card-trophy .cta-card-title {
+  color: var(--testo-verde);
+  text-shadow: 0 0 8px rgba(16, 184, 128, 0.6);
+}
+
+.card-trophy:hover {
+  transform: translateY(-5px);
+  background-color: rgba(16, 184, 128, 0.05);
+  box-shadow: 0 0 20px rgba(16, 184, 128, 0.5), inset 0 0 10px rgba(16, 184, 128, 0.2);
+}
+
+.card-trophy:hover .cta-card-arrow {
+  transform: translateX(4px);
+  opacity: 1;
+}
+
+/* ═══════════════════════════════════════════
+   POPUP USERNAME
+   ═══════════════════════════════════════════ */
+.contenitore-popup {
+  position: fixed;
+  inset: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at 40% 20%, rgba(236,72,153,.12), rgba(0,0,0,.78));
+  z-index: 9998;
+  padding: 16px;
+}
+
+.contenitore-popup.visibile {
+  display: flex;
+}
+
+#popup {
+  width: min(560px, 96vw);
+  background: var(--sfondo);
+  border: 2px solid var(--testo-rosa);
+  border-radius: 18px;
+  box-shadow: 0 0 20px rgba(236,72,153,.45), 0 0 44px rgba(6,182,212,.2), inset 0 0 20px rgba(236,72,153,.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  padding: 36px 28px 40px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.popup-testa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.popup-giocatore {
+  font-size: clamp(14px, 2vw, 18px);
+  color: var(--testo-rosa);
+  letter-spacing: 3px;
+  text-shadow: 0 0 8px rgba(236,72,153,.7);
+}
+
+.popup-titolo {
+  font-size: clamp(24px, 5vw, 36px);
+  color: var(--testo-giallo);
+  text-shadow: 0 0 14px rgba(251,191,36,.6);
+  text-align: center;
+  line-height: 1.1;
+}
+
+.popup-modulo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.popup-campo {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#input-testo {
+  width: min(360px, 92%);
+  padding: 14px 18px;
+  border: 2px solid var(--testo-blu);
+  border-radius: 12px;
+  background: rgba(0,0,0,.2);
+  color: var(--testo-giallo);
+  font-size: clamp(16px, 3vw, 22px);
+  text-align: center;
+  letter-spacing: 3px;
+  box-shadow: inset 0 0 16px var(--testo-blu), 0 0 12px var(--testo-blu);
+  transition: box-shadow .25s, border-color .25s;
+  outline: none;
+}
+
+#input-testo::placeholder {
+  color: rgba(6,182,212,.5);
+}
+
+#input-testo:focus {
+  box-shadow: 0 0 20px var(--testo-blu), 0 0 35px var(--testo-rosa);
+  border-color: var(--testo-rosa);
+}
+
+.popup-contatore {
+  position: absolute;
+  right: 4%;
+  bottom: -20px;
+  font-size: 13px;
+  color: var(--testo-blu);
+  text-shadow: 0 0 8px rgba(6,182,212,.6);
+}
+
+#msg-errore {
+  display: none;
+  font-size: clamp(13px, 2vw, 16px);
+  color: #ff4d6d;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+#btn-invia {
+  background: transparent;
+  color: var(--testo-rosa);
+  border: 2px solid var(--testo-rosa);
+  padding: 10px 36px;
+  font-size: clamp(16px, 2.5vw, 20px);
+  border-radius: 12px;
+  cursor: pointer;
+  letter-spacing: 2px;
+  min-width: 200px;
+  box-shadow: 0 0 16px var(--testo-rosa), inset 0 0 10px rgba(236,72,153,.2);
+  transition: box-shadow .2s, color .2s;
+}
+
+#btn-invia::before { content: "< "; }
+#btn-invia::after  { content: " >"; }
+
+#btn-invia:hover {
+  box-shadow: 0 0 22px var(--testo-rosa), 0 0 32px var(--testo-viola);
+  color: var(--testo-giallo);
+}
+
+.popup-messaggio {
+  font-size: clamp(12px, 2vw, 16px);
+  color: var(--testo-rosa);
+  letter-spacing: 5px;
+  text-shadow: 0 0 10px rgba(236,72,153,.6);
+  animation: lampeggio 2s infinite step-end;
+}
+
+/* Mobile navbar overrides are loaded from navbar.css */

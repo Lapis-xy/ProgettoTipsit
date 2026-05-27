@@ -1,0 +1,400 @@
+* {
+    font-family: "Jersey 10", sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0%;
+    padding: 0%;
+    font-family: "Jersey 10", sans-serif;
+    font-weight: 10;
+    font-style: normal;
+    background-color: var(--sfondo);
+}
+
+:root {
+    --sfondo: #17092a;
+    --testo-giallo: #fbbf24;
+    --testo-verde: #10b880;
+    --testo-blu: #06b6d4;
+    --testo-rosa: #ec4899;
+    --testo-viola: #a352f1;
+    --testo-arancione: #ea6b17;
+    --testo: #574a74;
+    --sfondo-navbar: #08001a;
+}
+
+.Sezione1 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 1200px;
+    width: 90%;
+    margin: 30px auto;
+}
+
+.Sezione2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Sezione3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Sezione4 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px;
+    max-width: 1280px;
+}
+
+.Sezione4>div {
+    display: contents;
+}
+
+.Sezione4>div>.card {
+    grid-column: span 1;
+}
+
+@media (max-width: 1024px) {
+    .Sezione4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .Sezione1 {
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 16px;
+        text-align: center;
+        width: min(100%, 900px);
+    }
+
+    .Sezione2 {
+        width: 100%;
+        padding: 0 16px;
+    }
+
+    .completamento {
+        width: 100%;
+        margin: 0 auto 30px;
+    }
+
+    .Sezione3 {
+        flex-wrap: wrap;
+        gap: 18px;
+        padding: 0 16px;
+    }
+
+    .Sezione4 {
+        padding: 16px;
+    }
+}
+
+@media (max-width: 640px) {
+    .Sezione4 {
+        grid-template-columns: 1fr;
+    }
+}
+
+.filtri-rarita {
+    display: flex;
+    gap: 25px;
+}
+
+.filtri-rarita input {
+    display: none;
+}
+
+.filtro-rarita {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    opacity: .5;
+    transition: .2s;
+}
+
+.filtro-rarita .quadratino {
+    width: 25px;
+    height: 25px;
+    border: 2px solid;
+}
+
+.filtri-rarita input:checked+.filtro-rarita {
+    opacity: 1;
+    transform: scale(1.05);
+    text-shadow: 0 0 8px currentColor;
+}
+
+.filtri-rarita input:checked+.filtro-rarita .quadratino {
+    background-color: currentColor;
+}
+
+.filtro-rarita:hover {
+    opacity: 1;
+}
+
+.bronzo {
+    color: #c7772d;
+}
+
+.bronzo .quadratino {
+    border-color: #c7772d;
+}
+
+.argento {
+    color: #d7d7d7;
+}
+
+.argento .quadratino {
+    border-color: #d7d7d7;
+}
+
+.oro {
+    color: #f0c13b;
+}
+
+.oro .quadratino {
+    border-color: #f0c13b;
+}
+
+.platino {
+    color: #b04cff;
+}
+
+.platino .quadratino {
+    border-color: #b04cff;
+}
+
+.trofeo {
+    padding-top: 20px;
+    border: var(--testo-rosa) 1px solid;
+    border-radius: 0px;
+    background-color: var(--sfondo);
+    width: 100%;
+    overflow: hidden;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    border-left: 3px solid;
+    border-bottom: 3px solid;
+}
+
+.trofeo:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(255, 200, 0, 0.1);
+}
+
+.scheda-bronzo {
+    border-left-color: #c7772d;
+    border-bottom-color: #c7772d;
+    border-top: 1px solid #c7772d;
+    border-right: 1px solid #c7772d;
+    box-shadow: inset 0 0 20px rgba(199, 119, 45, 0.1);
+}
+
+.scheda-argento {
+    border-left-color: #d7d7d7;
+    border-bottom-color: #d7d7d7;
+    border-top: 1px solid #d7d7d7;
+    border-right: 1px solid #d7d7d7;
+    box-shadow: inset 0 0 20px rgba(215, 215, 215, 0.1);
+}
+
+.scheda-oro {
+    border-left-color: #f0c13b;
+    border-bottom-color: #f0c13b;
+    border-top: 1px solid #f0c13b;
+    border-right: 1px solid #f0c13b;
+    box-shadow: inset 0 0 20px rgba(240, 193, 59, 0.1);
+}
+
+.scheda-platino {
+    border-left-color: #b04cff;
+    border-bottom-color: #b04cff;
+    border-top: 1px solid #b04cff;
+    border-right: 1px solid #b04cff;
+    box-shadow: inset 0 0 20px rgba(176, 76, 255, 0.1);
+}
+
+.trofeo.hidden {
+    display: none;
+}
+
+.completamento {
+    padding-left: 10px;
+    border: var(--testo) 2px solid;
+    margin-bottom: 30px;
+    width: 70%;
+}
+
+#trofeo {
+    width: 30px;
+    height: 30px;
+    zoom: 1.43;
+    color: var(--testo-giallo);
+    text-shadow:
+        0 0px 21px var(--testo-giallo),
+        0 0px 42px var(--testo-giallo);
+}
+
+.barra-completamento {
+    width: 97%;
+    height: 20px;
+    margin-left: 7px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 12px;
+    background-color: rgba(23, 9, 42, 0.95);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+}
+
+.barra-fill {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(135deg, #8b5cf6 0%, #c084fc 100%);
+    border-radius: 12px;
+    transition: width 0.3s ease, background 0.3s ease;
+    box-shadow: 0 0 12px rgba(163, 82, 241, 0.35);
+}
+
+p {
+    color: var(--testo);
+    margin: 0px;
+    font-size: 40px;
+    margin-left: 10px;
+}
+
+h2 {
+    margin-bottom: 0px;
+}
+
+h4 {
+    margin: 0px;
+}
+
+h6 {
+    color: var(--testo);
+    margin-left: 10px;
+}
+
+.testo {
+    color: var(--testo-giallo);
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+.card-header {
+    padding: 12px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: auto;
+}
+
+.contenitore-barra {
+    width: 100%;
+    height: 8px;
+    background-color: rgba(23, 9, 42, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.barra-avanzamento {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(135deg, #8b5cf6 0%, #c084fc 100%);
+    border-radius: 8px;
+    transition: width 0.3s ease, background 0.3s ease;
+    box-shadow: 0 0 12px rgba(163, 82, 241, 0.35);
+}
+
+.card-body {
+    flex: 1;
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.titolo-trofeo {
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--testo-giallo);
+    margin-bottom: 8px;
+    text-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
+    letter-spacing: 1px;
+}
+
+.descrizione-trofeo {
+    font-size: 18px;
+    color: var(--testo);
+    line-height: 1.4;
+    margin: 0;
+}
+
+.card-footer {
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--testo);
+    opacity: 0.8;
+}
+
+.etichetta-rarita {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 4px 12px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.etichetta-rarita.bronzo {
+    color: #c7772d;
+    border: 1px solid #c7772d;
+    background-color: rgba(199, 119, 45, 0.1);
+}
+
+.etichetta-rarita.argento {
+    color: #d7d7d7;
+    border: 1px solid #d7d7d7;
+    background-color: rgba(215, 215, 215, 0.1);
+}
+
+.etichetta-rarita.oro {
+    color: #f0c13b;
+    border: 1px solid #f0c13b;
+    background-color: rgba(240, 193, 59, 0.1);
+}
+
+.etichetta-rarita.platino {
+    color: #b04cff;
+    border: 1px solid #b04cff;
+    background-color: rgba(176, 76, 255, 0.1);
+}
+
+.contatore-trofeo {
+    font-size: 16px;
+    color: var(--testo-giallo);
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(251, 191, 36, 0.3);
+}
