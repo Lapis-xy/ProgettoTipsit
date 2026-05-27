@@ -1,30 +1,201 @@
 body{
-
-    margin: 20px;
+    margin: 0%;
+    padding: 0%;
     font-family: "Jersey 10", sans-serif;
     font-weight: 10;
     font-style: normal;
-    font-size: 60px;
-    background-image: linear-gradient(to bottom,rgba(18, 3, 27, 0.925));
-    background-repeat: no-repeat;
-    background-attachment: fixed ;
+    background-color: var(--sfondo);
 }
 
+:root{
+
+    
+    --sfondo: #17092a;
+    --testo-giallo: #fbbf24;
+    --testo-verde: #10b880;
+    --testo-blu: #06b6d4;
+    --testo-rosa: #ec4899;
+    --testo-viola: #a352f1;
+    --testo-arancione: #ea6b17;
+    --testo: #574a74;
+    --sfondo-navbar: #08001a;
+
+}
+
+.Sezione1{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    margin-left: 280px;
+    margin-top: 30px;
+}
+
+.Sezione2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Sezione3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Sezione4{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    width: 100%;
+    margin: 0;
+    padding: 30px;
+}
+
+.Sezione4 > div {
+    display: contents;
+}
+
+.Sezione4 > div > .card {
+    grid-column: span 1;
+}
+
+@media (max-width: 1024px) {
+    .Sezione4{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .Sezione4{
+        grid-template-columns: 1fr;
+    }
+}
+
+.ranks{
+    display:flex;
+    gap:25px;
+}
+
+/* nasconde checkbox */
+.ranks input{
+    display:none;
+}
+
+/* label cliccabile */
+.rank{
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    cursor:pointer;
+
+    font-size:30px;
+    font-weight:bold;
+    text-transform:uppercase;
+
+    opacity:.5;
+    transition:.2s;
+}
+
+/* quadratino */
+.rank .box{
+    width:25px;
+    height:25px;
+    border:2px solid;
+}
+
+/* quando selezionato */
+.ranks input:checked + .rank{
+    opacity:1;
+    transform:scale(1.05);
+    text-shadow:0 0 8px currentColor;
+    .box{
+        background-color:currentColor;
+    }
+}
+
+/* hover */
+
+.rank:hover{
+    opacity:1;
+}
+
+/* colori */
+
+.bronze{
+    color:#c7772d;
+}
+.bronze .box{
+    border-color:#c7772d;
+}
+
+.silver{
+    color:#d7d7d7;
+}
+.silver .box{
+    border-color:#d7d7d7;
+}
+
+.gold{
+    color:#f0c13b;
+}
+
+.platinum{
+    color:#b04cff;
+}
+.platinum .box{
+    border-color:#b04cff;
+}
+
+
+.achievment{
+    padding-top: 20px;
+    border: var(--testo-rosa) 1px solid;
+    border-radius: 0px;
+    background-color: var(--sfondo);
+    min-height: 220px;
+    width: 100%;
+}
 
 
 .completamento{
+    padding-left: 10px;
+    border: var(--testo) 2px solid ;
+    margin-bottom: 30px;
+    width: 70%;
+}
 
-    padding: 10px;
-    border:purple 5px solid ;
-    margin: 30px;
-    width:  90%;
 
 
+#trofeo{
+    width: 30px;
+    height: 30px;
+    zoom: 1.43;
+   color: var(--testo-giallo);
+  text-shadow: 
+    0 0px 21px var(--testo-giallo),
+    0 0px 42px var(--testo-giallo);
+}
+
+.barra-completamento{
+    border: var(--testo) 1px solid ;
+    width: 97%;
+    height: 20px;
+    margin: 10px;
+}
+.barra-completamento-achievment{
+    border: var(--testo) 1px solid ;
+    width: 94%;
+    height: 20px;
+    margin: 10px;
 }
 
 p{
-    color:slateblue;
-    margin: 30px;
+    color: var(--testo);
+    margin: 0px;
+    font-size: 40px;
+    margin-left: 10px;
 }
 
 h2{
@@ -32,12 +203,269 @@ h2{
 }
 
 h4{
-    margin: 10px;
+    margin: 0px;
+}
+
+
+h6{
+    color: var(--testo);
+    margin-left: 10px;
+}
+
+.testo{
+    color: var(--testo-giallo);
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+*{
+    font-family: "Jersey 10", sans-serif;
+    font-style: normal;
+    font-weight: 10px;
+    font-size: 50px;
+    margin: 0;
+    padding: 0;
+
+}
+
+#nav-titolo{
+   
+      color: var(--testo-giallo);
+  text-shadow: 
+    0 0px 21px var(--testo-giallo),
+    0 0px 42px var(--testo-giallo);
+    
+}
+
+nav img{
+
+    width: 50px;
+    height: 50px;
+
+}
+
+nav{
+    font-size: 50px;
+    border-bottom: 4px solid var(--testo-rosa);
+    box-shadow: 0 0 12px var(--testo-rosa), 0 0 24px var(--testo-rosa);
+    height: 70px;
+    width: 100%;
+    background-color: var(--sfondo-navbar);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+#nav-sinistra{
+    display: flex;
+    gap: 10px;
+    padding-left: 1%;
+    align-items: center;
+}
+
+#nav-destra{
+    display: flex;
+    justify-content: right;
+    gap: 10px;
+    padding-right: 2%;
+    align-items: center;
+}
+
+nav a{
+
+    background-color: transparent;
+    color: var(--testo-blu);
+    font-size: 20px;
+    letter-spacing: 1px;
+    padding: 10px;
+    border: solid var(--testo-blu) 2px;
+    display: flex;
+    align-items: center;
+     gap: 6px;
+    text-decoration: none;
+
+}
+
+.nav-icone{
+    width: 18px;
+    height: 18px;
+    display: block;
+}
+
+nav a:hover{
+    cursor: pointer;
+    background-color: var(--testo-rosa);
+
+
 }
 
 
 
-.testo{
-    color: yellow;
-    margin: 30px;
+nav a.attivo{
+    background-color: var(--testo-rosa);
+    border: 2px solid var(--testo-giallo);
+}
+
+nav a.attivo:hover{
+    background-color: var(--sfondo);
+    border: 2px solid var(--testo-giallo);
+}
+
+/* Achievement Card Styles */
+.card-header{
+    padding: 12px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: auto;
+}
+
+.progress-bar-container{
+    width: 100%;
+    height: 8px;
+    background-color: rgba(87, 74, 116, 0.5);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar{
+    height: 100%;
+    background: linear-gradient(black);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+    box-shadow: 0 0 8px rgba(251, 191, 36, 0.5);
+}
+
+.achievement-icon{
+    width: 50px;
+    height: 50px;
+    opacity: 0.8;
+}
+
+.card-body{
+    flex: 1;
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.achievement-title{
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--testo-giallo);
+    margin-bottom: 8px;
+    text-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
+    letter-spacing: 1px;
+}
+
+.achievement-desc{
+    font-size: 18px;
+    color: var(--testo);
+    line-height: 1.4;
+    margin: 0;
+}
+
+.card-footer{
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--testo);
+    opacity: 0.8;
+}
+
+.rarity-badge{
+    font-size: 14px;
+    font-weight: bold;
+    padding: 4px 12px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.rarity-badge.bronze{
+    color: #c7772d;
+    border: 1px solid #c7772d;
+    background-color: rgba(199, 119, 45, 0.1);
+}
+
+.rarity-badge.silver{
+    color: #d7d7d7;
+    border: 1px solid #d7d7d7;
+    background-color: rgba(215, 215, 215, 0.1);
+}
+
+.rarity-badge.gold{
+    color: #f0c13b;
+    border: 1px solid #f0c13b;
+    background-color: rgba(240, 193, 59, 0.1);
+}
+
+.rarity-badge.platinum{
+    color: #b04cff;
+    border: 1px solid #b04cff;
+    background-color: rgba(176, 76, 255, 0.1);
+}
+
+.achievement-count{
+    font-size: 16px;
+    color: var(--testo-giallo);
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(251, 191, 36, 0.3);
+}
+
+.achievment{
+    background-color: var(--sfondo);
+    border-radius: 0px;
+    overflow: hidden;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    border-left: 3px solid;
+    border-bottom: 3px solid;
+}
+
+.achievment:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(255, 200, 0, 0.1);
+}
+
+.bronze-card{
+    border-left-color: #c7772d;
+    border-bottom-color: #c7772d;
+    border-top: 1px solid #c7772d;
+    border-right: 1px solid #c7772d;
+    box-shadow: inset 0 0 20px rgba(199, 119, 45, 0.1);
+}
+
+.silver-card{
+    border-left-color: #d7d7d7;
+    border-bottom-color: #d7d7d7;
+    border-top: 1px solid #d7d7d7;
+    border-right: 1px solid #d7d7d7;
+    box-shadow: inset 0 0 20px rgba(215, 215, 215, 0.1);
+}
+
+.gold-card{
+    border-left-color: #f0c13b;
+    border-bottom-color: #f0c13b;
+    border-top: 1px solid #f0c13b;
+    border-right: 1px solid #f0c13b;
+    box-shadow: inset 0 0 20px rgba(240, 193, 59, 0.1);
+}
+
+.platinum-card{
+    border-left-color: #b04cff;
+    border-bottom-color: #b04cff;
+    border-top: 1px solid #b04cff;
+    border-right: 1px solid #b04cff;
+    box-shadow: inset 0 0 20px rgba(176, 76, 255, 0.1);
+}
+
+/* Filtro: nascondere card */
+.achievment.hidden{
+    display: none;
 }
