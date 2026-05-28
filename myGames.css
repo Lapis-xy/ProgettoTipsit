@@ -98,11 +98,8 @@ input,
 /* Seleziona l'icona del calendario nei browser basati su Webkit (Chrome, Edge, Opera, Safari) */
 input[type="date"]::-webkit-calendar-picker-indicator {
     filter: invert(1);
-    /* Inverte il colore da nero a bianco puro */
     cursor: pointer;
-    /* Trasforma il cursore in manina quando ci passi sopra */
     opacity: 0.8;
-    /* Opzionale: lo rende leggermente morbido, portalo a 1 se lo vuoi brillantissimo */
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator:hover {
@@ -408,4 +405,62 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
     color: white;
     font-size: 20px;
     margin-bottom: 4px;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateX(-50%) translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+}
+
+.alert-box {
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10000;
+    background: var(--sfondo);
+    border-radius: 8px;
+    padding: 25px 35px;
+    min-width: 320px;
+    text-align: center;
+    animation: slideDown 0.4s ease-out;
+    font-family: "Jersey 10", sans-serif;
+    font-size: 18px;
+    color: white;
+}
+
+.alert-box.alert-success {
+    border: 2px solid var(--testo-verde);
+    box-shadow: 0 0 20px rgba(16, 184, 128, 0.6), inset 0 0 10px rgba(16, 184, 128, 0.6);
+}
+
+.alert-box.alert-error {
+    border: 2px solid var(--testo-rosa);
+    box-shadow: 0 0 20px rgba(236, 72, 153, 0.6), inset 0 0 10px rgba(236, 72, 153, 0.6);
+}
+
+.alert-title {
+    margin: 0 0 12px 0;
+    font-size: 24px;
+    text-shadow: 0 0 10px currentColor;
+}
+
+.alert-box.alert-success .alert-title {
+    color: var(--testo-verde);
+}
+
+.alert-box.alert-error .alert-title {
+    color: var(--testo-rosa);
+}
+
+.alert-message {
+    margin: 0;
+    font-size: 16px;
+    color: #e0e0e0;
 }

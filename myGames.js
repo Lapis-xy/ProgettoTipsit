@@ -1,7 +1,3 @@
-// ══════════════════════════════════════════
-//  GAME VAULT — myGames.js
-// ══════════════════════════════════════════
-
 let casellaNomeVideogioco = document.getElementById("inputNomeVideogioco");
 let casellaDataInizio = document.getElementById("inputDataInizio");
 let casellaModalita = document.getElementById("selectModalita");
@@ -18,6 +14,25 @@ let parModalSingle = document.getElementById("pModalSingle");
 let divBodyTempo = document.getElementById("divBodyTempo");
 let divBodySingle = document.getElementById("divBodySingle");
 
+function showAlert(title, message, type) {
+    let alertBox = document.createElement("div");
+    alertBox.className = `alert-box alert-${type}`;
+    
+    let titleEl = document.createElement("h2");
+    titleEl.className = "alert-title";
+    titleEl.textContent = title;
+    
+    let msgEl = document.createElement("p");
+    msgEl.className = "alert-message";
+    msgEl.textContent = message;
+    
+    alertBox.appendChild(titleEl);
+    alertBox.appendChild(msgEl);
+    document.body.appendChild(alertBox);
+    
+    setTimeout(() => alertBox.remove(), 3000);
+}
+
 caricaLocale();
 
 bottoneAggiungi.addEventListener("click", AggiungiVideogioco);
@@ -27,13 +42,13 @@ bottoneSalva.addEventListener("click", salvaLocale);
 
 function AggiungiVideogioco() {
     if (casellaNomeVideogioco.value == "" || casellaDataInizio.value == "" || casellaOreGiocate.value == "" || Number(casellaOreGiocate.value) <= 0) {
-        if (Number(casellaOreGiocate.value) <= 0) {
-            alert("ERRORE: inserisci un numero positivo");
+        if (casellaNomeVideogioco.value == "" || casellaDataInizio.value == "" || casellaOreGiocate.value == "") {
+            showAlert("ERRORE", "Riempire tutti i campi!", "error");
         } else {
-            alert("ERRORE: riempire tutti i campi");
+            showAlert("ERRORE", "Inserire un numero positivo!", "error");
         }
     } else if (trovaVideogioco(casellaNomeVideogioco.value) != -1) {
-        alert("ERRORE: videogioco gia' inserito");
+        showAlert("GIÀ PRESENTE", "Questo videogioco è già in libreria!", "error");
         casellaNomeVideogioco.value = "";
         casellaDataInizio.value = "";
         casellaModalita.value = "Single Player";
@@ -54,6 +69,8 @@ function AggiungiVideogioco() {
         casellaDataInizio.value = "";
         casellaModalita.value = "Single Player";
         casellaOreGiocate.value = "";
+
+        showAlert("SUCCESSO", "Videogioco '" + videogioco.nome + "' aggiunto!", "success");
     }
 }
 
@@ -75,6 +92,7 @@ function eliminaTutto() {
     listaVideogiochi = [];
     salvaLocale();
     aggiornaTabella();
+    showAlert("ELIMINATI", "Tutti i videogiochi sono stati rimossi!", "success");
 }
 
 function mostraTempo() {
@@ -138,6 +156,7 @@ function contaSinglePlayer() {
 
 function salvaLocale() {
     localStorage.setItem("listavideogiochi", JSON.stringify(listaVideogiochi));
+    showAlert("SALVATO", "Libreria sincronizzata con successo!", "success");
 }
 
 function caricaLocale() {
@@ -205,9 +224,11 @@ function aggiornaTabella() {
         tdAzioni.appendChild(bottoneEliminaVideogioco);
 
         bottoneEliminaVideogioco.addEventListener("click", function () {
+            let nomeGioco = listaVideogiochi[i].nome;
             listaVideogiochi.splice(i, 1);
             salvaLocale();
             aggiornaTabella();
+            showAlert("RIMOSSO", "'" + nomeGioco + "' eliminato dalla libreria!", "error");
         });
     }
 

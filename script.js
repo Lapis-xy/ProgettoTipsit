@@ -1,17 +1,12 @@
-// ══════════════════════════════════════════
-//  GAME VAULT — script.js (Home)
-// ══════════════════════════════════════════
+let nomeUtente         = document.getElementById("nome-utente");
+let nomeUtenteAccount  = document.getElementById("nome-utente-account");
+let contenitorePopup   = document.getElementById("contenitore-popup");
+let inputTesto         = document.getElementById("input-testo");
+let counter            = document.getElementById("conteggio");
+let btnInvia           = document.getElementById("btn-invia");
+let msgErrore          = document.getElementById("msg-errore");
 
-// ── Riferimenti DOM ────────────────────────
-const nomeUtente         = document.getElementById("nome-utente");
-const nomeUtenteAccount  = document.getElementById("nome-utente-account");
-const contenitorePopup   = document.getElementById("contenitore-popup");
-const inputTesto         = document.getElementById("input-testo");
-const counter            = document.getElementById("conteggio");
-const btnInvia           = document.getElementById("btn-invia");
-const msgErrore          = document.getElementById("msg-errore");
 
-// ── Init ───────────────────────────────────
 controllaLocalstorage();
 aggiornaInfoGiocate();
 
@@ -19,25 +14,22 @@ if (inputTesto && counter) {
     inputTesto.addEventListener("input", aggiornaContatore);
 }
 
-// ── Event listeners ───────────────────────
 btnInvia?.addEventListener("click", salvaDati);
 
-// Aggiornamento real-time da altre schede
 window.addEventListener("storage", function (e) {
-    if (e.key === "listavideogiochi" || e.key === "listaVideogiochi") {
+    if (e.key == "listavideogiochi" || e.key == "listaVideogiochi") {
         aggiornaInfoGiocate();
     }
 });
 
-// ── Funzioni account ───────────────────────
 function cambiaNomeUtente() {
-    const username = localStorage.getItem("username") || "Player One";
+    let username = localStorage.getItem("username") || "Player One";
     if (nomeUtente)        nomeUtente.textContent        = username;
     if (nomeUtenteAccount) nomeUtenteAccount.textContent = username;
 }
 
 function controllaLocalstorage() {
-    const username = localStorage.getItem("username");
+    let username = localStorage.getItem("username");
     if (username) {
         contenitorePopup?.classList.remove("visibile");
         cambiaNomeUtente();
@@ -65,32 +57,26 @@ function aggiornaContatore() {
     }
 }
 
-// ── Statistiche ───────────────────────────
 function aggiornaInfoGiocate() {
-    // legge da entrambe le chiavi per compatibilità con myGames.js
-    const raw  = localStorage.getItem("listavideogiochi") || localStorage.getItem("listaVideogiochi") || "[]";
-    const lista = JSON.parse(raw);
+    let raw  = localStorage.getItem("listavideogiochi") || localStorage.getItem("listaVideogiochi") || "[]";
+    let lista = JSON.parse(raw);
 
-    // Calcola valori dalla struttura salvata da myGames.js:
-    // ogni gioco ha: { nome, data, modalita, tempo }
-    const nGiochi = lista.length;
-    const nOre    = lista.reduce((acc, g) => acc + (parseFloat(g.tempo) || 0), 0);
-    const nSolo   = lista.filter(g =>
-        g.modalita === "Single Player" ||
-        g.modalita === "single player" ||
-        g.modalita === "single"
+    let nGiochi = lista.length;
+    let nOre    = lista.reduce((acc, g) => acc + (parseFloat(g.tempo) || 0), 0);
+    let nSolo   = lista.filter(g =>
+        g.modalita == "Single Player" ||
+        g.modalita == "single player" ||
+        g.modalita == "single"
     ).length;
-    const nOnline = lista.filter(g =>
-        g.modalita === "Multiplayer" ||
-        g.modalita === "multiplayer" ||
-        g.modalita === "online"
+    let nOnline = lista.filter(g =>
+        g.modalita == "Multiplayer" ||
+        g.modalita == "multiplayer" ||
+        g.modalita == "online"
     ).length;
 
-    // Trofei: contati da navbar.js in base agli achievement sbloccati
-    const nTrofei = calcolaTrofei(lista);
+    let nTrofei = calcolaTrofei(lista);
 
-    // Mappa id → valore
-    const mappa = [
+    let mappa = [
         { id: "info-giocate-giochi",  valore: nGiochi  },
         { id: "info-giocate-ore",     valore: nOre     },
         { id: "info-giocate-solo",    valore: nSolo    },
@@ -99,9 +85,9 @@ function aggiornaInfoGiocate() {
     ];
 
     mappa.forEach(({ id, valore }) => {
-        const box = document.getElementById(id);
+        let box = document.getElementById(id);
         if (!box) return;
-        const campo = box.querySelector(".info-giocate-valore");
+        let campo = box.querySelector(".info-giocate-valore");
         if (campo) campo.textContent = valore;
     });
 }
@@ -111,12 +97,12 @@ function aggiornaInfoGiocate() {
  * per mostrare il contatore trofei nella home.
  */
 function calcolaTrofei(lista) {
-    const totalHours        = lista.reduce((s, g) => s + (parseFloat(g.tempo) || 0), 0);
-    const singlePlayerCount = lista.filter(g =>
-        g.modalita === "Single Player" || g.modalita === "single player"
+    let totalHours        = lista.reduce((s, g) => s + (parseFloat(g.tempo) || 0), 0);
+    let singlePlayerCount = lista.filter(g =>
+        g.modalita == "Single Player" || g.modalita == "single player"
     ).length;
-    const hasFastRun = lista.some(g => {
-        const ore = parseFloat(g.tempo) || 0;
+    let hasFastRun = lista.some(g => {
+        let ore = parseFloat(g.tempo) || 0;
         return ore > 0 && ore <= 5;
     });
 
